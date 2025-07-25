@@ -24,7 +24,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                     className="flex items-center gap-2 border-t border-gray-200 pt-4"
                 >
                     <dt className="flex flex-center text-sm text-gray-600">
-                        <span className="font-black">({product.quantity})</span>
+                        <span className="font-black"> ({product.quantity}) {" x "}</span>
                     </dt>
 
                     <dd className="text-sm font-medium text-gray-900">{product.product.name}</dd>
