@@ -1,10 +1,11 @@
 import Heading from "@/components/ui/Heading";
-import { getProducts, productCount } from "@/src/lib/products";
 import ProductTable from "@/components/products/ProductsTable";
 import ProductsPagination from "@/components/products/ProductsPagination";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import ProductSearchForm from "@/components/products/ProductSearchForm";
+// import { postgresqlProductRepository } from '@/src/lib/repositories/product/postgresqlProductRepository';
+import { getProducts, productCount } from '@/src/lib/services/product.service';
 
 const ProductsPage = async ({
   searchParams
@@ -34,7 +35,8 @@ const ProductsPage = async ({
       <div className="flex flex-col lg:flex-row lg:justify-between gap-5">
         <Link
           href={'/admin/products/new'}
-          className="bg-amber-400 w-full lg:w-auto text-xl px-10 py-3 text-center font-bold cursor-pointer"
+          // className="bg-amber-400 w-full lg:w-auto text-xl px-10 py-3 text-center font-bold cursor-pointer"
+          className="hidden"
         >
           Crear Producto
         </Link>

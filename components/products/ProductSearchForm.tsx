@@ -33,7 +33,7 @@ const ProductSearchForm = () => {
       <input 
         className="p-2 placeholder-gray-400 w-full"
         type="text"
-        placeholder="Buscar producto"
+        placeholder="Buscar productos"
         name="search"
       />
 

@@ -1,4 +1,5 @@
-import { getCategories } from "@/src/lib/categories"
+// import { categoryRepository } from '@/src/lib/repositories/category/categoryRepository.prisma'
+import { getCategories } from '@/src/lib/services/category.service';
 import UploadImagenCloudinaryWidget from "../ui/UploadImageCloudinary";
 import { Product } from "@prisma/client";
 

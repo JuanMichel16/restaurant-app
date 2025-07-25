@@ -14,7 +14,7 @@ const OrderSummary = () => {
 
   const handleCreateOrder = async (formData: FormData) => {
     const data = {
-      name: formData.get('name'),
+      name: formData.get('name') as string,
       total: total,
       products: order
     }
@@ -53,7 +53,7 @@ const OrderSummary = () => {
 
           <p className="text-2xl mt-20 text-center">
             Total a pagar: {''}
-            <span>${total}</span> 
+            <span>${total.toFixed(2)}</span> 
           </p>
 
           <form
