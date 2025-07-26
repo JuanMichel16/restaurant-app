@@ -4,7 +4,7 @@ import Heading from "@/components/ui/Heading";
 import ProductSearchForm from "@/components/products/ProductSearchForm";
 import GoBackButton from "@/components/ui/GoBackButton";
 
-const SearchPage = async ({searchParams} : {searchParams: {search: string}}) => {
+const SearchPage = async ({searchParams} : {searchParams: Promise<{search: string}>}) => {
   const params = await searchParams;
   const search = params.search;
 

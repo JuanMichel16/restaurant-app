@@ -2,7 +2,7 @@ import ProductCard from "@/components/products/ProductCard";
 import Heading from "@/components/ui/Heading";
 import { getProductsByCategory } from "@/src/lib/products";
 
-const OrderPage = async ({params}: {params: {slug: string}}) => {
+const OrderPage = async ({params}: {params: Promise<{slug: string}>}) => {
   const { slug } = await params;
   const products = await getProductsByCategory(slug);
   
