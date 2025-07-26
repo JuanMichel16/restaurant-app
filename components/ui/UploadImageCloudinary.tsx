@@ -14,7 +14,10 @@ const UploadImagenCloudinaryWidget = ({ image } : {image: string | undefined}) =
       onSuccess={(result, {widget}) => {
         if(result.event === 'success') {
           widget.close()
-          setImage(result?.info?.secure_url)
+          
+          const image = result?.info as {secure_url: string};
+          setImage(image.secure_url)
+          
         }
       }}
 
