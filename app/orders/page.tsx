@@ -2,6 +2,7 @@
 
 import LatestOrderItem from "@/components/order/LatestOrderItem";
 import Logo from "@/components/ui/Logo";
+import { OrderWithProducts } from "@/types/order.type";
 import useSWR from "swr";
 
 const OrdersPage = () => {
@@ -25,7 +26,7 @@ const OrdersPage = () => {
         <div
           className="grid grid-cols-1 gap-5 max-w-5xl mx-auto mt-10"
         >
-          {data.map(order => (
+          {data.map((order: OrderWithProducts) => (
             <LatestOrderItem key={order.id} order={order}/>
           ))}
         </div>
