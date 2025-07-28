@@ -3,7 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { prisma } from '@/src/lib/prisma';
 
-export async function completeOrder(formData: FormData) {
+export async function completeOrderAction(formData: FormData) {
   const orderId = formData.get('order_id')!
 
   try {
@@ -22,4 +22,4 @@ export async function completeOrder(formData: FormData) {
   } catch (error) {
     console.log(error)
   }
-} 
+}

@@ -53,7 +53,7 @@ const OrderSummary = () => {
 
           <p className="text-2xl mt-20 text-center">
             Total a pagar: {''}
-            <span>${total}</span> 
+            <span>${total.toFixed(2)}</span> 
           </p>
 
           <form

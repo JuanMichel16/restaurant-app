@@ -2,6 +2,7 @@
 
 import OrderCard from "@/components/order/OrderCard";
 import Heading from "@/components/ui/Heading";
+import Skeleton from "@/components/order/Skeleton";
 import { OrderWithProducts } from "@/types/order.type";
 import useSWR  from 'swr';
 
@@ -9,12 +10,15 @@ const OrdersPage = () => {
   const ORDERSURL = '/admin/orders/api';
   const fetcher = (url: string) => fetch(url).then(res => res.json()).then(data => data);
   const {data: orders, error, isLoading} = useSWR<OrderWithProducts[]>(ORDERSURL, fetcher, {
-    refreshInterval: 120000,
+    refreshInterval: 5000,
     revalidateOnFocus: false
   });
   
   if (error) return <div>failed to load</div>
-  if (isLoading) return <div>loading...</div>
+  
+  if (isLoading) {
+    return <Skeleton />
+  }
 
   if(orders) return ( 
     <>
