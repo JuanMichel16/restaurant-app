@@ -2,7 +2,7 @@ import { z } from 'zod';
 
 export const orderSchema = z.object({
   name: z.string().min(1, 'Tu nombre es obligatorio'),
-  total: z.number().gte(1, 'Total must be grater than 1'),
+  total: z.number().gte(1, 'El total debe ser mayor a 0'),
   products: z.array(
       z.object({
         id: z.number(),

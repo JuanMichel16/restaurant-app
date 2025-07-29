@@ -1,6 +1,10 @@
-import { formatCurrency } from "@/src/utils";
+"use client"
+
+import { formatCurrency} from "@/src/utils";
 import { OrderWithProducts } from "@/types/order.type";
-import { completeOrder } from "@/actions/complete-order-action";
+import { completeOrderAction } from "@/actions/complete-order-action";
+import { toast } from "react-toastify";
+import { formatDate } from '@/src/utils/index';
 
 interface OrderCardProps {
     order: OrderWithProducts
@@ -9,12 +13,25 @@ interface OrderCardProps {
 export default function OrderCard({ order }: OrderCardProps) {
   const totalFormatted = formatCurrency(order?.total);
 
+
+  const handleCompleteOrder = async (formData: FormData) => {
+    const response = await completeOrderAction(formData);
+
+    if(response && !response.success) {
+        toast.error(response.message);
+    }
+  }
+
   return (
       <section
           aria-labelledby="summary-heading"
           className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6  lg:mt-0 lg:p-8 space-y-4"
       >
           <p className='text-2xl font-medium text-gray-900'>Cliente: {order?.name}</p>
+          <p className="font-bold">Fecha y hora del pedido: <span className="font-normal">{formatDate(order.date)}</span> </p>
+          {order.status && (
+              <p className="font-bold">Fecha y hora de completado: <span className="font-normal">{formatDate(order.orderReadyAt)}</span> </p>
+          )}
           <p className='text-lg font-medium text-gray-900'>Productos Ordenados:</p>
           <dl className="mt-6 space-y-4">
 
@@ -24,7 +41,7 @@ export default function OrderCard({ order }: OrderCardProps) {
                     className="flex items-center gap-2 border-t border-gray-200 pt-4"
                 >
                     <dt className="flex flex-center text-sm text-gray-600">
-                        <span className="font-black">({product.quantity})</span>
+                        <span className="font-black"> ({product.quantity}) {" x "}</span>
                     </dt>
 
                     <dd className="text-sm font-medium text-gray-900">{product.product.name}</dd>
@@ -37,18 +54,21 @@ export default function OrderCard({ order }: OrderCardProps) {
               </div>
           </dl>
 
-          <form action={completeOrder}>
-              <input 
-                type="hidden"
-                value={order?.id}
-                name={'order_id'}
-              />
-              <input
-                  type="submit"
-                  className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
-                  value='Marcar Orden Completada'
-              />
-          </form>
+          {!order.status && (
+            <form action={handleCompleteOrder}>
+                <input 
+                    type="hidden"
+                    value={order?.id}
+                    name={'order_id'}
+                />
+                <input
+                    type="submit"
+                    className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
+                    value='Marcar Orden Completada'
+                />
+            </form>
+          )}
+
       </section>
   )
 }

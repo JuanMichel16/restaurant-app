@@ -24,7 +24,12 @@ export async function createOrder({name, total, products}: CreateOrderProps) {
         }
       }
     });
+
+
+    return { success: true, message: null}
   } catch (error) {
-    console.log(error)
-  }
+      if(error instanceof Error) {
+        return { success: false, message: "Ocurrio al agregar el producto"}
+      }
+    }
 }

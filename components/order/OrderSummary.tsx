@@ -28,7 +28,7 @@ const OrderSummary = () => {
       return;
     }
 
-    const response = await createOrder({name: data.name, total: data.total, products: data.products})
+    const response = await createOrder({name: data.name, total: data.total, products: data.products});
     
     if(response?.errors) {
       response?.errors.forEach( issue => {
@@ -37,7 +37,12 @@ const OrderSummary = () => {
       return;
     }
 
-    toast.success('Pedido realizado correctamente')
+    if(!response?.success) {
+      toast.error(response?.message);
+      return;
+    }
+
+    toast.success('Pedido creado correctamente')
     clearOrder();
   }
 
@@ -53,7 +58,7 @@ const OrderSummary = () => {
 
           <p className="text-2xl mt-20 text-center">
             Total a pagar: {''}
-            <span>${total}</span> 
+            <span>${total.toFixed(2)}</span> 
           </p>
 
           <form

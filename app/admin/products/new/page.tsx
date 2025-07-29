@@ -5,7 +5,7 @@ import Heading from "@/components/ui/Heading";
 const CreateProductPage = () => {
   return ( 
     <>
-      <Heading>Agrega un nuevo producto :)</Heading>
+      <Heading>Agrega un nuevo producto:</Heading>
 
       <AddProductForm>
         <ProductForm />

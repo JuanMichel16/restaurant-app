@@ -16,7 +16,8 @@ export const createProduct = async (data: unknown) => {
     await prisma.product.create({
       data: result.data
     })
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
-    console.log(error)
+    return {success: false, message: "Hubo un error al crear la orden."};
   }
 }

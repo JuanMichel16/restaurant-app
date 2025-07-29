@@ -2,11 +2,11 @@ import EditProductForm from "@/components/products/EditProductForm";
 import ProductForm from "@/components/products/ProductForm";
 import GoBackButton from "@/components/ui/GoBackButton";
 import Heading from "@/components/ui/Heading";
-import { getProductoById } from "@/src/lib/products";
+import { getProductById } from '@/src/lib/services/productService';
 
 const EditProductPage = async ({params} : {params: Promise<{id: string}>}) => {
   const productId = await params;
-  const product = await getProductoById(productId.id);
+  const product = await getProductById(+productId.id);
 
   return (
     <>

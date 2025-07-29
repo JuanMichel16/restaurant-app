@@ -15,3 +15,11 @@ export const getImagePath = (imagePath: string) => {
     return `/products/${imagePath}.jpg`
   }
 }
+
+export const formatDate = (date: Date | null) => {
+  if(!date) return ''
+
+  if(date instanceof Date) return date.toLocaleString(); 
+
+  return new Date(date).toLocaleString();
+}
