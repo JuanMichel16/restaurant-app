@@ -1,6 +1,6 @@
 import { postgresqlProductRepository } from '@/src/lib/repositories/product/postgresqlProductRepository';
 import { localProductRepository } from '@/src/lib/repositories/product/localProductRepository';
-import { BaseProductRepository } from './productRepository.base';
+import { BaseProductRepository } from './baseProductRepository';
 
 
 export const getProductRepository = (): BaseProductRepository => {

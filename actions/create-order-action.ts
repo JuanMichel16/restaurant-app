@@ -6,14 +6,12 @@ import { CreateOrderProps } from "@/interfaces/order.interface";
 
 export async function createOrder({name, total, products}: CreateOrderProps) {
   const result = orderSchema.safeParse({name, total, products});
-  console.log(result);
 
   if(!result.success) {
     return {errors: result.error.issues}
   }
 
   try {
-    console.log("Entraaa")
     await prisma.order.create({
       data: {
         name: result.data.name,
@@ -26,8 +24,12 @@ export async function createOrder({name, total, products}: CreateOrderProps) {
         }
       }
     });
+
+
+    return { success: true, message: null}
   } catch (error) {
-    console.log("Truena")
-    console.log(error)
-  }
+      if(error instanceof Error) {
+        return { success: false, message: "Ocurrio al agregar el producto"}
+      }
+    }
 }

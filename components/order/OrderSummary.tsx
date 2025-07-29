@@ -28,7 +28,7 @@ const OrderSummary = () => {
       return;
     }
 
-    const response = await createOrder({name: data.name, total: data.total, products: data.products})
+    const response = await createOrder({name: data.name, total: data.total, products: data.products});
     
     if(response?.errors) {
       response?.errors.forEach( issue => {
@@ -37,7 +37,12 @@ const OrderSummary = () => {
       return;
     }
 
-    toast.success('Pedido realizado correctamente')
+    if(!response?.success) {
+      toast.error(response?.message);
+      return;
+    }
+
+    toast.success('Pedido creado correctamente')
     clearOrder();
   }
 

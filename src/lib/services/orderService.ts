@@ -10,3 +10,7 @@ export const getPendingOrders = async () => {
 export const completeOrder = async (orderId: number) => {
   return await currentRepository.completeOrder(orderId);
 }
+
+export const getCompletedOrders = async () => {
+  return await currentRepository.getCompletedOrders()
+}

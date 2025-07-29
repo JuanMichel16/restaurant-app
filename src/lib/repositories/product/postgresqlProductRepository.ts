@@ -1,7 +1,7 @@
 import { prisma } from '@/src/lib/prisma';
 import { Product, Category } from '@prisma/client';
 import { notFound } from 'next/navigation'
-import { BaseProductRepository } from '@/src/lib/repositories/product/productRepository.base';
+import { BaseProductRepository } from '@/src/lib/repositories/product/baseProductRepository';
 
 type ProductWithCategory = (Product & {category: Category}); 
 

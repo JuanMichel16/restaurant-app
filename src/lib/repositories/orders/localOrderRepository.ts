@@ -1,5 +1,5 @@
 import { OrderWithProducts } from "@/types/order.type";
-import { BaseOrderRepository } from '@/src/lib/repositories/orders/orderRepository.base';
+import { BaseOrderRepository } from '@/src/lib/repositories/orders/baseOrderRepository';
 
 export const localOrderRepository: BaseOrderRepository = {
   orders: [],
@@ -24,7 +24,12 @@ export const localOrderRepository: BaseOrderRepository = {
 
     const newOrders = this.orders?.map(order => order?.id !== orderId  ? order : orderFound) as (OrderWithProducts[] | undefined);
     this.orders = newOrders;
-  }
+  },
+
+  async getCompletedOrders() {
+    const pendingOrders = this.orders?.filter(order => order.status);
+    return pendingOrders!;
+  },
 
 }
 

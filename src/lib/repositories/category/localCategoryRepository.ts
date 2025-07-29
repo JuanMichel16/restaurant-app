@@ -1,5 +1,5 @@
 import { categories } from "../../data/categories";
-import { BaseCategoryRepository } from "./categoryRepository.base";
+import { BaseCategoryRepository } from "./baseCategoryRepository";
 import { Category } from "@/types/category.type";
 
 export const localCategoryRepository: BaseCategoryRepository  = {

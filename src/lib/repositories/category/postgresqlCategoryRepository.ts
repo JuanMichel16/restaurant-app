@@ -1,5 +1,5 @@
 import { prisma } from '@/src/lib/prisma';
-import { BaseCategoryRepository } from './categoryRepository.base';
+import { BaseCategoryRepository } from './baseCategoryRepository';
 import { Category } from '@prisma/client';
 
 

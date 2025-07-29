@@ -1,6 +1,6 @@
 import { prisma } from "@/src/lib/prisma";
 import { OrderWithProducts } from "@/types/order.type";
-import { BaseOrderRepository } from '@/src/lib/repositories/orders/orderRepository.base';
+import { BaseOrderRepository } from '@/src/lib/repositories/orders/baseOrderRepository';
 
 export const postgresqlOrderRepository: BaseOrderRepository = {
   async getPendingOrders() : Promise<OrderWithProducts[]> {
@@ -30,6 +30,23 @@ export const postgresqlOrderRepository: BaseOrderRepository = {
         orderReadyAt: new Date(Date.now())
       }
     })
-  }
+  },
+
+  async getCompletedOrders() {
+    const orders = await prisma.order.findMany({
+      where:{
+        status: true
+      },
+      include: {
+        orderProducts: {
+          include: {
+            product: true
+          }
+        }
+      }
+    });
+    
+    return orders;
+  } 
 }
 

@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import ProductSearchForm from "@/components/products/ProductSearchForm";
 // import { postgresqlProductRepository } from '@/src/lib/repositories/product/postgresqlProductRepository';
-import { getProducts, productCount } from '@/src/lib/services/product.service';
+import { getProducts, productCount } from '@/src/lib/services/productService';
 
 const ProductsPage = async ({
   searchParams

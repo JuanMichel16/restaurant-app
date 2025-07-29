@@ -1,4 +1,4 @@
-import { ProductWithCategory, BaseProductRepository } from './productRepository.base'
+import { ProductWithCategory, BaseProductRepository } from './baseProductRepository'
 import { Product } from '@/types/product.type';
 import { products } from "../../data/products";
 import { notFound } from 'next/navigation'

@@ -1,7 +1,6 @@
 import ProductCard from "@/components/products/ProductCard";
 import Heading from "@/components/ui/Heading";
-// import { postgresqlProductRepository } from '@/src/lib/repositories/product/postgresqlProductRepository'
-import { getProductsByCategory } from '@/src/lib/services/product.service';
+import { getProductsByCategory } from '@/src/lib/services/productService';
 
 const OrderPage = async ({params}: {params: Promise<{slug: string}>}) => {
   const { slug } = await params;

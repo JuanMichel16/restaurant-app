@@ -3,7 +3,7 @@ import Heading from "@/components/ui/Heading";
 import ProductSearchForm from "@/components/products/ProductSearchForm";
 import GoBackButton from "@/components/ui/GoBackButton";
 // import { postgresqlProductRepository } from '@/src/lib/repositories/product/postgresqlProductRepository';
-import { searchProduct } from '@/src/lib/services/product.service';
+import { searchProduct } from '@/src/lib/services/productService';
 
 const SearchPage = async ({searchParams} : {searchParams: Promise<{search: string}>}) => {
   const params = await searchParams;

@@ -4,6 +4,7 @@ import LatestOrderItem from "@/components/order/LatestOrderItem";
 import Logo from "@/components/ui/Logo";
 import { OrderWithProducts } from "@/types/order.type";
 import useSWR from "swr";
+import Skeleton from "@/components/order/Skeleton";
 
 const OrdersPage = () => {
   const urlOrders = '/orders/api';
@@ -14,7 +15,7 @@ const OrdersPage = () => {
   });
 
   if(error) return <p>Ha ocurrido un error</p>
-  if(isLoading) return <p>Cargando...</p>
+  if(isLoading) return <Skeleton />
 
   return ( 
     <>
